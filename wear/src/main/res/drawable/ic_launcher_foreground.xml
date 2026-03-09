@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Strap superior -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49,18 Q47,18 47,20 L47,34 L61,34 L61,20 Q61,18 59,18 Z" />
+
+    <!-- Strap inferior -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M47,74 L47,88 Q47,90 49,90 L59,90 Q61,90 61,88 L61,74 Z" />
+
+    <!-- Contorno circular do relógio (branco) -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M32,54 A22,22 0 1 0 76,54 A22,22 0 1 0 32,54 Z"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5" />
+
+    <!-- Arco verde de bateria: 270° (75%) horário, do topo até a esquerda -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M54,37 A17,17 0 1 1 37,54"
+        android:strokeColor="#4CAF50"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+
+    <!-- Raio (lightning bolt) branco centralizado -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M56,44 L47,55 L54,55 L47,64 L62,53 L55,53 Z" />
+
+</vector>
