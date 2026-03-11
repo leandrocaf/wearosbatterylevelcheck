@@ -3,18 +3,22 @@ package com.leandrocaf.wearosbatterylevelcheck
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -37,6 +41,7 @@ import com.leandrocaf.wearosbatterylevelcheck.ui.theme.WearOsBatteryLevelCheckTh
 @Composable
 fun BatteryScreen(viewModel: BatteryViewModel = viewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+    val linkSendState by viewModel.linkSendState.collectAsState()
 
     val lifecycleOwner = LocalLifecycleOwner.current
     DisposableEffect(lifecycleOwner) {
@@ -52,17 +57,29 @@ fun BatteryScreen(viewModel: BatteryViewModel = viewModel()) {
             TopAppBar(title = { Text("Bateria do Relógio") })
         }
     ) { innerPadding ->
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
-            contentAlignment = Alignment.Center
+                .padding(innerPadding)
         ) {
-            when (val state = uiState) {
-                is BatteryUiState.Loading -> LoadingContent()
-                is BatteryUiState.NoWatchFound -> NoWatchContent(onRetry = viewModel::refresh)
-                is BatteryUiState.Connected -> ConnectedContent(state = state, onRefresh = viewModel::refresh)
-                is BatteryUiState.Error -> ErrorContent(message = state.message, onRetry = viewModel::refresh)
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                when (val state = uiState) {
+                    is BatteryUiState.Loading -> LoadingContent()
+                    is BatteryUiState.NoWatchFound -> NoWatchContent(onRetry = viewModel::refresh)
+                    is BatteryUiState.Connected -> ConnectedContent(state = state, onRefresh = viewModel::refresh)
+                    is BatteryUiState.Error -> ErrorContent(message = state.message, onRetry = viewModel::refresh)
+                }
+            }
+            if (linkSendState !is LinkSendState.Idle) {
+                LinkSendSection(
+                    state = linkSendState,
+                    onDismiss = viewModel::dismissLinkState
+                )
             }
         }
     }
@@ -161,6 +178,60 @@ private fun batteryColor(level: Int) = when {
     level < 20  -> Color(0xFFF44336) // vermelho
     level <= 50 -> Color(0xFFFFC107) // amarelo
     else        -> Color(0xFF4CAF50) // verde
+}
+
+@Composable
+private fun LinkSendSection(state: LinkSendState, onDismiss: () -> Unit) {
+    val containerColor = when (state) {
+        is LinkSendState.Success -> MaterialTheme.colorScheme.primaryContainer
+        is LinkSendState.Error   -> MaterialTheme.colorScheme.errorContainer
+        else                     -> MaterialTheme.colorScheme.surfaceVariant
+    }
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        colors = CardDefaults.cardColors(containerColor = containerColor)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            when (state) {
+                is LinkSendState.Sending -> {
+                    CircularProgressIndicator(modifier = Modifier.padding(end = 12.dp))
+                    Text("Enviando link para o relógio...", modifier = Modifier.weight(1f))
+                }
+                is LinkSendState.Success -> {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            "Link enviado ao relógio",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Text(
+                            state.url.take(60) + if (state.url.length > 60) "..." else "",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+                        )
+                    }
+                    TextButton(onClick = onDismiss) { Text("OK") }
+                }
+                is LinkSendState.Error -> {
+                    Text(
+                        state.message,
+                        modifier = Modifier.weight(1f),
+                        color = MaterialTheme.colorScheme.onErrorContainer
+                    )
+                    TextButton(onClick = onDismiss) { Text("OK") }
+                }
+                else -> {}
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)

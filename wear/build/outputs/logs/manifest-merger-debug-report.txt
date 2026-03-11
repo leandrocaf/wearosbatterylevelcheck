@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-43:12
-INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-43:12
-INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-43:12
-INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-43:12
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-62:12
+INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-62:12
+INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-62:12
+INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:2:1-62:12
 MERGED from [androidx.wear.compose:compose-material-core:1.4.1] /Users/lcaf/.gradle/caches/9.1.0/transforms/eebc3ee5bf9586359319570864448520/transformed/compose-material-core-1.4.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.wear.compose:compose-foundation:1.4.1] /Users/lcaf/.gradle/caches/9.1.0/transforms/af3c1f9a0f1450af192f88f7b355dc41/transformed/compose-foundation-1.4.1/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.wear.compose:compose-material:1.4.1] /Users/lcaf/.gradle/caches/9.1.0/transforms/7a6ca0af57f5d51c818473b0e1ced569/transformed/compose-material-1.4.1/AndroidManifest.xml:2:1-7:12
@@ -81,9 +81,27 @@ uses-feature#android.hardware.type.watch
 ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:4:5-64
 	android:name
 		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:4:19-61
+queries
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:6:5-15:15
+intent#action:name:android.intent.action.VIEW+data:scheme:https
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:7:9-10:18
+action#android.intent.action.VIEW
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:8:13-65
+	android:name
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:8:21-62
+data
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:9:13-44
+	android:host
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:40:21-37
+	android:scheme
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:9:19-41
+	android:pathPrefix
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:41:21-58
+intent#action:name:android.intent.action.VIEW+data:scheme:http
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:11:9-14:18
 application
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:6:5-41:19
-INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:6:5-41:19
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:17:5-60:19
+INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:17:5-60:19
 MERGED from [androidx.wear.compose:compose-foundation:1.4.1] /Users/lcaf/.gradle/caches/9.1.0/transforms/af3c1f9a0f1450af192f88f7b355dc41/transformed/compose-foundation-1.4.1/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.wear.compose:compose-foundation:1.4.1] /Users/lcaf/.gradle/caches/9.1.0/transforms/af3c1f9a0f1450af192f88f7b355dc41/transformed/compose-foundation-1.4.1/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-wearable:18.2.0] /Users/lcaf/.gradle/caches/9.1.0/transforms/1c627bf5c4b7a7a362774370d72b215e/transformed/play-services-wearable-18.2.0/AndroidManifest.xml:6:5-20
@@ -113,53 +131,49 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/lcaf
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.17.0] /Users/lcaf/.gradle/caches/9.1.0/transforms/8a0b5c7582c852978a8cdca32add923f/transformed/core-1.17.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:9:9-35
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:20:9-41
+	android:icon
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:19:9-43
 	android:allowBackup
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:7:9-35
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:18:9-35
 	android:theme
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:10:9-59
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:22:9-59
 activity#com.leandrocaf.wearosbatterylevelcheck.MainActivity
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:12:9-20:20
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:24:9-32:20
 	android:label
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:15:13-45
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:27:13-45
 	android:exported
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:14:13-36
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:26:13-36
 	android:name
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:13:13-41
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:25:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:16:13-19:29
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:28:13-31:29
 action#android.intent.action.MAIN
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:17:17-69
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:17:25-66
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:18:17-77
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:18:27-74
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:30:27-74
 service#com.leandrocaf.wearosbatterylevelcheck.BatteryListenerService
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:22:9-39:19
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:34:9-58:19
 	android:exported
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:24:13-36
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:23:13-51
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:35:13-51
 intent-filter#action:name:com.google.android.gms.wearable.MESSAGE_RECEIVED+data:host:*+data:pathPrefix:/battery_request+data:scheme:wear
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:25:13-31:29
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:37:13-43:29
 action#com.google.android.gms.wearable.MESSAGE_RECEIVED
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:26:17-91
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:38:17-91
 	android:name
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:26:25-88
-data
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:27:17-30:45
-	android:host
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:28:21-37
-	android:scheme
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:30:21-42
-	android:pathPrefix
-		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:29:21-58
+		ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:38:25-88
 intent-filter#action:name:com.google.android.gms.wearable.MESSAGE_RECEIVED+data:host:*+data:pathPrefix:/phone_battery+data:scheme:wear
-ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:32:13-38:29
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:44:13-50:29
+intent-filter#action:name:com.google.android.gms.wearable.MESSAGE_RECEIVED+data:host:*+data:pathPrefix:/send_url+data:scheme:wear
+ADDED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml:51:13-57:29
 uses-sdk
 INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/lcaf/Projects/WearOsBatteryLevelCheck/wear/src/main/AndroidManifest.xml

@@ -13,6 +13,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+sealed class LinkSendState {
+    data object Idle : LinkSendState()
+    data object Sending : LinkSendState()
+    data class Success(val url: String) : LinkSendState()
+    data class Error(val message: String) : LinkSendState()
+}
+
 sealed class BatteryUiState {
     data object Loading : BatteryUiState()
     data object NoWatchFound : BatteryUiState()
@@ -28,6 +35,9 @@ class BatteryViewModel(application: Application) : AndroidViewModel(application)
 
     private val _uiState = MutableStateFlow<BatteryUiState>(BatteryUiState.Loading)
     val uiState: StateFlow<BatteryUiState> = _uiState.asStateFlow()
+
+    private val _linkSendState = MutableStateFlow<LinkSendState>(LinkSendState.Idle)
+    val linkSendState: StateFlow<LinkSendState> = _linkSendState.asStateFlow()
 
     private val nodeClient = Wearable.getNodeClient(application)
     private val messageClient = Wearable.getMessageClient(application)
@@ -95,6 +105,29 @@ class BatteryViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun sendUrlToWatch(url: String) {
+        viewModelScope.launch {
+            _linkSendState.value = LinkSendState.Sending
+            try {
+                val nodes = nodeClient.connectedNodes.await()
+                if (nodes.isEmpty()) {
+                    _linkSendState.value = LinkSendState.Error("Nenhum relógio conectado")
+                    return@launch
+                }
+                nodes.forEach { node ->
+                    messageClient.sendMessage(node.id, SEND_URL_PATH, url.toByteArray()).await()
+                }
+                _linkSendState.value = LinkSendState.Success(url)
+            } catch (e: Exception) {
+                _linkSendState.value = LinkSendState.Error(e.message ?: "Erro ao enviar link")
+            }
+        }
+    }
+
+    fun dismissLinkState() {
+        _linkSendState.value = LinkSendState.Idle
+    }
+
     override fun onCleared() {
         messageClient.removeListener(messageListener)
         super.onCleared()
@@ -103,6 +136,7 @@ class BatteryViewModel(application: Application) : AndroidViewModel(application)
     companion object {
         const val BATTERY_REQUEST_PATH = "/battery_request"
         const val BATTERY_RESPONSE_PATH = "/battery_response"
+        const val SEND_URL_PATH = "/send_url"
         private const val REFRESH_INTERVAL_MS = 30_000L
     }
 }

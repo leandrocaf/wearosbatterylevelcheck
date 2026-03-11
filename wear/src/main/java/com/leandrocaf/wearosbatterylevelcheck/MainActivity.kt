@@ -10,6 +10,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        restoreLastUrl()
         requestPhoneBattery()
         setContent {
             MaterialTheme {
@@ -21,6 +22,12 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         requestPhoneBattery()
+    }
+
+    private fun restoreLastUrl() {
+        val url = getSharedPreferences(BatteryListenerService.PREFS_NAME, MODE_PRIVATE)
+            .getString(BatteryListenerService.KEY_LAST_URL, null)
+        if (url != null) BatteryListenerService.lastReceivedUrl.value = url
     }
 
     private fun requestPhoneBattery() {
